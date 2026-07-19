@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://wood.tres" type="Material" id=1]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://The Threshold.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Environment" id=1]
+fog_enabled = true
+fog_color = Color( 0.184314, 0.141176, 0.270588, 1 )
+
+[node name="World" type="Spatial"]
+
+[node name="The Threshold" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05239, 1.68031, -11.8174 )
+
+[node name="Room" type="CSGBox" parent="."]
+use_collision = true
+width = 30.4833
+height = 6.99864
+depth = 29.8114
+material = ExtResource( 1 )
+
+[node name="Interior" type="CSGBox" parent="Room"]
+transform = Transform( 0.999941, -0.0108732, 0, 0.0108732, 0.999941, 0, 0, 0, 1, 0.00297206, 0.269109, -0.281762 )
+operation = 2
+width = 27.0781
+height = 6.12862
+depth = 27.3736
+material = ExtResource( 1 )
+
+[node name="Door1" type="CSGBox" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1516, -0.0012629, 0.0987216 )
+operation = 2
+width = 2.80683
+height = 5.92812
+depth = 3.9687
+material = ExtResource( 1 )
+
+[node name="Room2" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6245, 0, 0 )
+use_collision = true
+width = 30.4833
+height = 6.99864
+depth = 29.8114
+material = ExtResource( 1 )
+
+[node name="Interior" type="CSGBox" parent="Room2"]
+transform = Transform( 0.999941, -0.0108732, 0, 0.0108732, 0.999941, 0, 0, 0, 1, 0.00297206, 0.269109, -0.281762 )
+operation = 2
+width = 27.0781
+height = 6.12862
+depth = 27.3736
+material = ExtResource( 1 )
+
+[node name="Door2" type="CSGBox" parent="Room2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4418, -0.346809, 0.102117 )
+operation = 2
+height = 6.14288
+depth = 4.50595
+material = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.343839, 0, -0.040805 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Player"]
+environment = SubResource( 1 )
